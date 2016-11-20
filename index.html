@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+  
+  <style type="text/css">
+    .clock-container {
+  margin-top: 42px;
+}
+
+.message {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  width: 270px;
+  text-align: center;
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.blue {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+
+.red {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+  </style>
+
+  <title>Tenntoo</title>
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+var timerMessage = 'It is time to work: ';
+var workToggle = true;
+var minWorked = 0;
+var minGoofed = 0;
+
+var bell = document.createElement('audio');
+bell.setAttribute('src', 'http://soundbible.com/grab.php?id=1598&type=mp3');
+
+var clock = $('#your-clock').FlipClock(600, {
+  // ... your options here
+  clockFace: 'MinuteCounter',
+  countdown: true,
+  callbacks: {
+
+    start: function() {
+      // $('#status-message').html('Time to get busy!');
+    },
+
+    stop: function() {
+      workToggle = !workToggle;
+      if (workToggle) {
+        minGoofed += 2;
+        $('#minutes-goofed').html(minGoofed);
+        $('#status-message').html('Time to get busy!');
+        $('#status-message').addClass('red').removeClass('blue');
+        bell.load();
+        bell.play();
+        clock.setTime(600);
+        clock.start();
+      } else {
+        minWorked += 10;
+        $('#minutes-worked').html(minWorked);
+        $('#status-message').html('You <strong>MUST</strong> goof off now!');
+        $('#status-message').addClass('blue').removeClass('red');
+        bell.load();
+        bell.play();
+        clock.setTime(120);
+        clock.start();
+      }
+      $('#total-minutes').html(minGoofed + minWorked);
+    }
+  }
+});
+
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+    <div id="your-clock" class="clock-container"></div>
+  <div id="status-message" class="message red">Time to get busy!</div>
+  <div id="progress-message" class="message blue"><span id="minutes-worked">0</span> minutes of work and <span id="minutes-goofed">0</span> minutes of goofing off accomplished. <span id="total-minutes">0</span> minutes total.</div>
+
+  
+</body>
+
+</html>
+
