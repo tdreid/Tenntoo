@@ -5,6 +5,17 @@ var minWorked = 0;
 var minGoofed = 0;
 var bell = document.createElement('audio');
 bell.setAttribute('src', 'http://soundbible.com/grab.php?id=1598&type=mp3');
+function togglePhase(phase,increment,message,addMe,removeMe,setTime)
+{
+  phase += increment;
+  $('#status-message').html(message);
+  $('#status-message').addClass(addMe).removeClass(removeMe);
+  bell.load();
+  bell.play();
+  clock.setTime(setTime);
+  clock.start();  
+  $('#total-minutes').html(minGoofed + minWorked);  
+}
 var clock = $('#your-clock').FlipClock(600, {
   // ... your options here
   clockFace: 'MinuteCounter',
@@ -15,26 +26,8 @@ var clock = $('#your-clock').FlipClock(600, {
     },
     stop: function() {
       workToggle = !workToggle;
-      if (workToggle) {
-        minGoofed += 2;
-        $('#minutes-goofed').html(minGoofed);
-        $('#status-message').html('Time to get busy!');
-        $('#status-message').addClass('red').removeClass('blue');
-        bell.load();
-        bell.play();
-        clock.setTime(600);
-        clock.start();
-      } else {
-        minWorked += 10;
-        $('#minutes-worked').html(minWorked);
-        $('#status-message').html('You <strong>MUST</strong> goof off now!');
-        $('#status-message').addClass('blue').removeClass('red');
-        bell.load();
-        bell.play();
-        clock.setTime(120);
-        clock.start();
-      }
-      $('#total-minutes').html(minGoofed + minWorked);
+      workToggle ? togglePhase(minGoofed,2,'Time to get busy!','red','blue',600) : 
+                   togglePhase(minWorked,10,'You <strong>MUST</strong> goof off now!','blue','red',120);
     }
   }
 });
