@@ -1,6 +1,8 @@
 # Tenntoo
 A preconfigured timer for the '(10+2)*5' procrastination hack described at [43folders.com (11 Oct 2005)](http://www.43folders.com/2005/10/11/procrastination-hack-1025)
 
+[Click Here](https://tdreid.github.io/Tenntoo/) for a working demo.
+
 ![Tenntoo Screenshot](https://github.com/tdreid/Tenntoo/blob/master/docs/images/screenshot-tenntoo-2016-11-20-15-26-00.png?raw=true)
 
 ## Demonstrates:
