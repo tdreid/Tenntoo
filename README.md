@@ -1,5 +1,5 @@
 # Tenntoo
-- [![Code Climate](https://codeclimate.com/github/tdreid/tenntoo/badges/gpa.svg)](https://codeclimate.com/github/tdreid/tenntoo)
+- [![Code Climate](https://codeclimate.com/github/tdreid/Tenntoo/badges/gpa.svg)](https://codeclimate.com/github/tdreid/Tenntoo)
 A preconfigured timer for the '(10+2)*5' procrastination hack described at [43folders.com (11 Oct 2005)](http://www.43folders.com/2005/10/11/procrastination-hack-1025)
 
 [Click Here](https://tdreid.github.io/Tenntoo/) for a working demo.
